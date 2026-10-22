@@ -14,7 +14,6 @@ from maintainer_metrics import __version__
 from maintainer_metrics.client import GitHubClient
 from maintainer_metrics.metrics import RepositoryMetrics
 
-
 console = Console()
 
 
