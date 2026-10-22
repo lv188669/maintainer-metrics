@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+src/maintainer_metrics/__init__.py
+src/maintainer_metrics/cli.py
+src/maintainer_metrics/client.py
+src/maintainer_metrics/metrics.py
+src/maintainer_metrics/py.typed
+src/maintainer_metrics.egg-info/PKG-INFO
+src/maintainer_metrics.egg-info/SOURCES.txt
+src/maintainer_metrics.egg-info/dependency_links.txt
+src/maintainer_metrics.egg-info/entry_points.txt
+src/maintainer_metrics.egg-info/requires.txt
+src/maintainer_metrics.egg-info/top_level.txt
+tests/test_cli.py
+tests/test_client.py
+tests/test_metrics.py

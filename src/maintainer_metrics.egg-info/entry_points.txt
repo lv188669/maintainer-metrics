@@ -1,0 +1,2 @@
+[console_scripts]
+maintainer-metrics = maintainer_metrics.cli:main

@@ -190,10 +190,10 @@ def check(repository: str, token: Optional[str], json_output: bool) -> None:
         console.print(protection_text)
 
     except click.BadParameter as e:
-        console.print(f"[bold red]Error:[/bold red] {e.message}", err=True)
+        console.print(f"[bold red]Error:[/bold red] {e.message}")
         sys.exit(1)
     except Exception as e:
-        console.print(f"[bold red]Error:[/bold red] {e}", err=True)
+        console.print(f"[bold red]Error:[/bold red] {e}")
         sys.exit(1)
 
 
@@ -230,10 +230,10 @@ def summary(repository: str, token: Optional[str], max_chars: int) -> None:
         console.print(f"\n[dim]Character count: {len(summary_text)}/{max_chars}[/dim]")
 
     except click.BadParameter as e:
-        console.print(f"[bold red]Error:[/bold red] {e.message}", err=True)
+        console.print(f"[bold red]Error:[/bold red] {e.message}")
         sys.exit(1)
     except Exception as e:
-        console.print(f"[bold red]Error:[/bold red] {e}", err=True)
+        console.print(f"[bold red]Error:[/bold red] {e}")
         sys.exit(1)
 
 
