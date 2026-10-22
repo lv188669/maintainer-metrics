@@ -1,0 +1,65 @@
+name: Repository Metrics
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Repository to analyze (owner/repo)'
+        required: true
+        type: string
+      output_format:
+        description: 'Output format'
+        required: false
+        type: choice
+        options:
+          - summary
+          - detailed
+          - json
+        default: 'summary'
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install maintainer-metrics
+      run: |
+        pip install -e .
+
+    - name: Run metrics (summary)
+      if: inputs.output_format == 'summary'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "## Repository Metrics Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+        maintainer-metrics summary "${{ inputs.repository }}" >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+
+    - name: Run metrics (detailed)
+      if: inputs.output_format == 'detailed'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "## Repository Metrics (Detailed)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        maintainer-metrics check "${{ inputs.repository }}"
+
+    - name: Run metrics (JSON)
+      if: inputs.output_format == 'json'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo "## Repository Metrics (JSON)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo '```json' >> $GITHUB_STEP_SUMMARY
+        maintainer-metrics check "${{ inputs.repository }}" --json-output >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
