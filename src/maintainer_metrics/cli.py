@@ -31,9 +31,7 @@ def parse_repo(repo_arg: str) -> tuple[str, str]:
     """
     parts = repo_arg.split("/")
     if len(parts) != 2:
-        raise click.BadParameter(
-            f"Repository must be in format 'owner/repo', got: {repo_arg}"
-        )
+        raise click.BadParameter(f"Repository must be in format 'owner/repo', got: {repo_arg}")
     return parts[0], parts[1]
 
 
@@ -99,9 +97,7 @@ def check(repository: str, token: Optional[str], json_output: bool) -> None:
         basic_table.add_row("🍴 Forks", str(basic["forks"]))
         basic_table.add_row("👀 Watchers", str(basic["watchers"]))
         basic_table.add_row("📂 Size", f"{basic['size_kb']} KB")
-        basic_table.add_row(
-            "📜 License", basic["license"] if basic["license"] else "None"
-        )
+        basic_table.add_row("📜 License", basic["license"] if basic["license"] else "None")
         basic_table.add_row("🌿 Default Branch", basic["default_branch"])
 
         console.print(basic_table)
