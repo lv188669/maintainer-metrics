@@ -2,7 +2,7 @@
 
 import json
 import sys
-from typing import Optional
+from typing import Optional, Tuple
 
 import click
 from rich.console import Console
@@ -17,7 +17,7 @@ from maintainer_metrics.metrics import RepositoryMetrics
 console = Console()
 
 
-def parse_repo(repo_arg: str) -> tuple[str, str]:
+def parse_repo(repo_arg: str) -> Tuple[str, str]:
     """Parse owner/repo from argument.
 
     Args:
