@@ -19,16 +19,26 @@ A Python CLI tool that reports open-source maintainer health metrics useful for 
 
 ## Installation
 
+### From PyPI (recommended)
+
+```bash
+pip install maintainer-metrics
+```
+
+### From Source
+
 ```bash
 pip install git+https://github.com/lv188669/maintainer-metrics.git
 ```
 
-Or clone and install locally:
+### Development Installation
+
+Clone and install locally:
 
 ```bash
 git clone https://github.com/lv188669/maintainer-metrics.git
 cd maintainer-metrics
-pip install -e .
+pip install -e ".[dev]"
 ```
 
 ## Usage
@@ -54,7 +64,14 @@ Output includes:
 Generate a concise plain-text summary suitable for grant applications:
 
 ```bash
-maintainer-metrics summary python/cpython
+maintainer-metrics summary django/django
+```
+
+**Example output:**
+
+```
+django/django: 91562 stars, 37211 forks. 1000 PRs (348 merged, 45.7% merge
+rate). 233 commits in last 90 days by 63 authors. License: BSD-3-Clause.
 ```
 
 Customize character limit:
@@ -62,6 +79,8 @@ Customize character limit:
 ```bash
 maintainer-metrics summary python/cpython --max-chars 300
 ```
+
+See the [examples/](examples/) directory for more real-world outputs.
 
 ### JSON Output
 
