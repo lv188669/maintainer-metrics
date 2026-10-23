@@ -1,6 +1,6 @@
 """Maintainer Metrics - Health metrics for open-source maintainers."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Royce Generoso"
 __email__ = "lv188669@users.noreply.github.com"
 
