@@ -1,10 +1,28 @@
 # maintainer-metrics
 
+**Generate GitHub repository health metrics for grant applications and maintainer triage.**
+
 [![CI](https://github.com/lv188669/maintainer-metrics/actions/workflows/ci.yml/badge.svg)](https://github.com/lv188669/maintainer-metrics/actions/workflows/ci.yml)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Python CLI tool that reports open-source maintainer health metrics useful for grant applications and repository triage.
+A Python CLI tool that fetches and formats GitHub repository statistics (stars, releases, issue/PR activity, commit history) into grant-ready summaries and structured reports.
+
+## Quick Start
+
+```bash
+# Install
+pip install git+https://github.com/lv188669/maintainer-metrics.git
+
+# Check repository metrics
+maintainer-metrics check python/cpython
+
+# Generate grant summary (character-limited)
+maintainer-metrics summary django/django --max-chars 500
+
+# Export as JSON
+maintainer-metrics check pandas-dev/pandas --json-output
+```
 
 ## Features
 
@@ -19,19 +37,19 @@ A Python CLI tool that reports open-source maintainer health metrics useful for 
 
 ## Installation
 
-### From PyPI (recommended)
+### From PyPI (recommended, when published)
 
 ```bash
 pip install maintainer-metrics
 ```
 
-### From Source
+### From GitHub
 
 ```bash
 pip install git+https://github.com/lv188669/maintainer-metrics.git
 ```
 
-### Development Installation
+### Local Development
 
 Clone and install locally:
 
